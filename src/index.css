@@ -1,0 +1,268 @@
+/* ====== FONT ====== */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
+
+/* ====== RESET ====== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ====== ROOT VARIABLES (BRAND TAAT) ====== */
+:root {
+  --taat-dark: #002d31;
+  --taat-dark-2: #00363b;
+  --taat-teal: #00464b;
+
+  --taat-green: #c8ff14;
+  /* Neon Green */
+  --taat-green-hover: #d5ff4d;
+
+  --text-light: #ffffff;
+  --text-muted: #c9d4d4;
+
+  --card-bg: #ffffff;
+  --card-shadow: rgba(0, 0, 0, 0.18);
+
+  --transition: 0.25s ease;
+}
+
+/* ====== BODY ====== */
+body {
+  font-family: "Inter", sans-serif;
+  background: linear-gradient(135deg, var(--taat-dark), var(--taat-teal));
+  color: var(--text-light);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ====== SCROLLBAR (Modern) ====== */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--taat-dark-2);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--taat-green);
+  border-radius: 50px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--taat-green-hover);
+}
+
+/* ====== CARD (Global, dipakai seluruh app) ====== */
+.card {
+  background: var(--card-bg);
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 6px 18px var(--card-shadow);
+  transition: var(--transition);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.28);
+}
+
+/* ====== BUTTON ====== */
+.btn {
+  background: var(--taat-green);
+  color: var(--taat-dark);
+  font-weight: 600;
+  padding: 10px 22px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.btn:hover {
+  background: var(--taat-green-hover);
+}
+
+/* ====== STATUS BADGE ====== */
+
+.status-badge {
+  padding: 6px 18px;
+  border-radius: 50px;
+  font-size: 14px;
+  font-weight: 600;
+  display: inline-block;
+}
+
+/* green */
+.status-up {
+  background: var(--taat-green);
+  color: var(--taat-dark);
+}
+
+/* red */
+.status-down {
+  background: #ff6b6b;
+  color: #3a0000;
+}
+
+/* neutral */
+.status-checking {
+  background: #e6e6e6;
+  color: #444;
+}
+
+/* ====== CENTER LAYOUT ====== */
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+/* ====== TRANSITIONS ====== */
+.fade-in {
+  animation: fadeIn 0.5s ease forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* PAGE LAYOUT FIX — FLEX ROW RESPONSIVE */
+.status-card {
+  width: 100%;
+}
+
+
+.page-container {
+  width: 100%;
+  max-width: 900px;   /* batas elegan TAAT */
+  margin: 0 auto;
+  margin-top: 40px;
+
+  display: flex;
+  flex-direction: row; /* tetap column karena card full width */
+  gap: 20px;
+
+  padding-bottom: 60px;
+}
+
+
+@media (max-width: 768px) {
+  .page-container {
+    flex-direction: column;
+    /* MOBILE → column */
+    gap: 14px;
+  }
+}
+
+
+/* Kurangi tinggi halaman supaya tidak terlalu kosong */
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  /* from center → top */
+  padding-top: 40px;
+}
+
+/* CARD WRAPPER */
+.status-card {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 26px 28px;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  transition: 0.25s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  position: relative;
+}
+
+.status-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 18px 36px rgba(0, 0, 0, 0.18);
+}
+
+/* HEADER: indicator + badge */
+.status-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* STATUS DOT */
+.status-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.status-dot.up {
+  background: var(--taat-green);
+  box-shadow: 0 0 10px var(--taat-green);
+}
+
+.status-dot.down {
+  background: #ff4b4b;
+  box-shadow: 0 0 10px #ff4b4b;
+}
+
+.status-dot.checking {
+  background: #bfbfbf;
+}
+
+/* BADGE */
+.status-badge {
+  padding: 6px 18px;
+  border-radius: 50px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.status-badge.up {
+  background: var(--taat-green);
+  color: #00363b;
+}
+
+.status-badge.down {
+  background: #ff6b6b;
+  color: #3a0000;
+}
+
+.status-badge.checking {
+  background: #e5e5e5;
+  color: #444;
+}
+
+/* BODY */
+.status-body {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.status-title {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+  color: #00363b;
+}
+
+.status-url {
+  margin: 0;
+  font-size: 14px;
+  color: #667575;
+  font-weight: 500;
+}
